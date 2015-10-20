@@ -1,0 +1,153 @@
+{
+    "scenes": [
+        {
+            "sceneID": "ActionScene",
+            "sounds": [
+                {
+                    "sound": "vine1",
+                    "soundGroup": "vine-swing"
+                },
+                {
+                    "sound": "vine2",
+                    "soundGroup": "vine-swing"
+                },
+                {
+                    "sound": "vine3",
+                    "soundGroup": "vine-swing"
+                },
+                {
+                    "sound": "vine4",
+                    "soundGroup": "vine-swing"
+                },
+                {
+                    "sound": "meow1",
+                    "soundGroup": "meow"
+                },
+                {
+                    "sound": "meow2",
+                    "soundGroup": "meow"
+                },
+                {
+                    "sound": "meow3",
+                    "soundGroup": "meow"
+                },
+                {
+                    "sound": "meow4",
+                    "soundGroup": "meow"
+                },
+                {
+                    "sound": "landing1",
+                    "soundGroup": "landing"
+                },
+                {
+                    "sound": "landing2",
+                    "soundGroup": "landing"
+                },
+                {
+                    "sound": "landing3",
+                    "soundGroup": "landing"
+                },
+                {
+                    "sound": "landing4",
+                    "soundGroup": "landing"
+                },
+                {
+                    "sound": "landing5",
+                    "soundGroup": "landing"
+                },
+                {
+                    "sound": "falling-off-screen",
+                    "soundGroup": ""
+                },
+                {
+                    "sound": "step1",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step2",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step3",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step4",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step5",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step6",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step7",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "step8",
+                    "soundGroup": "footsteps"
+                },
+                {
+                    "sound": "wood-toggle",
+                    "soundGroup": ""
+                }
+            ]
+        },
+        {
+            "sceneID": "TitleScene",
+            "sounds": [
+                {
+                    "sound": "wood-click",
+                    "soundGroup": ""
+                },
+                {
+                    "sound": "conga-roll",
+                    "soundGroup": ""
+                }
+            ]
+        },
+        {
+            "sceneID": "OptionsScene",
+            "sounds": [
+                {
+                    "sound": "meow3",
+                    "soundGroup": ""
+                },
+                {
+                    "sound": "wood-click",
+                    "soundGroup": ""
+                },
+                {
+                    "sound": "wood-toggle",
+                    "soundGroup": ""
+                }
+            ]
+        },
+        {
+            "sceneID": "PauseScene",
+            "sounds": [
+                {
+                    "sound": "wood-click",
+                    "soundGroup": ""
+                },
+                {
+                    "sound": "wood-toggle",
+                    "soundGroup": ""
+                }
+            ]
+        },
+        {
+            "sceneID": "CreditsScene",
+            "sounds": [
+                {
+                    "sound": "conga-roll",
+                    "soundGroup": ""
+                }
+            ]
+        }
+    ]
+}

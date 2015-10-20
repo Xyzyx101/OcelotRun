@@ -1,0 +1,193 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="cat meow_data" version="1.3.0" audacityversion="2.0.0" sel0="35.9935854149" sel1="35.9935854149" vpos="0" h="0.0000000000" zoom="15.1971523174" rate="44100.0">
+	<tags/>
+	<wavetrack name="Audio Track" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="8.03776581">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="28105">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001748.au" len="28105" min="-1.0" max="0.865307" rms="0.073076"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="6.28419916">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="55944">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001dda.au" len="55944" min="-1.0" max="0.855611" rms="0.089842"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.59655763">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="44257">
+				<waveblock start="0">
+					<simpleblockfile filename="e000141e.au" len="44257" min="-1.0" max="0.86226" rms="0.08463"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="1.003535526600" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="0.57242895">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="62477">
+				<waveblock start="0">
+					<simpleblockfile filename="e00016c9.au" len="62477" min="-0.891251" max="0.763581" rms="0.078781"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="1.416686697707" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="2.71297317">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="58400">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001fa2.au" len="58400" min="-1.0" max="0.866186" rms="0.083326"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="85492__bennychico11__individualcatsoundeffects" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="12.19800648">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="34460">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001b8d.au" len="34460" min="-0.772238" max="1.0" rms="0.091234"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="16.38464857">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="46791">
+				<waveblock start="0">
+					<simpleblockfile filename="e00013bd.au" len="46791" min="-0.785236" max="0.782031" rms="0.141177"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="13.81837831">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="72184">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001d09.au" len="72184" min="-0.961331" max="1.0" rms="0.055113"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="8.03776581">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="41325">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001b0a.au" len="41325" min="-0.546811" max="0.561428" rms="0.143443"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="18.17605951">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="21966">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001aa1.au" len="21966" min="-0.678397" max="0.592222" rms="0.088629"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="6.28419916">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="44979">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001a78.au" len="44979" min="-0.561206" max="0.528552" rms="0.11742"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="1.019909297052" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="85492__bennychico11__individualcatsoundeffects" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="12.19800648">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="34460">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001d46.au" len="34460" min="-0.770032" max="0.999973" rms="0.09119"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="16.38464857">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="46791">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001114.au" len="46791" min="-0.785236" max="0.781629" rms="0.141224"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="13.81837831">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="72184">
+				<waveblock start="0">
+					<simpleblockfile filename="e00013ea.au" len="72184" min="-0.961445" max="1.0" rms="0.055115"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="8.03776581">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="41325">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001596.au" len="41325" min="-0.547662" max="0.561496" rms="0.14359"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="18.17605951">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="21966">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001212.au" len="21966" min="-0.678594" max="0.592377" rms="0.088648"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="6.28419916">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="44979">
+				<waveblock start="0">
+					<simpleblockfile filename="e0001c1c.au" len="44979" min="-0.56139" max="0.529261" rms="0.117588"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="1.019909297052" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="34094__sazman__070422-cats-sample" channel="0" linked="1" mute="0" solo="0" height="99" minimized="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="22.19314685">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="234618">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e08.au" len="193473" min="-0.891251" max="0.88841" rms="0.170894"/>
+				</waveblock>
+				<waveblock start="193473">
+					<simpleblockfile filename="e0000322.au" len="41145" min="-0.047952" max="0.054133" rms="0.00706"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="34094__sazman__070422-cats-sample" channel="1" linked="0" mute="0" solo="0" height="105" minimized="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="22.19314685">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="234618">
+				<waveblock start="0">
+					<simpleblockfile filename="e000040e.au" len="193473" min="-0.846091" max="0.891251" rms="0.15052"/>
+				</waveblock>
+				<waveblock start="193473">
+					<simpleblockfile filename="e0000f18.au" len="41145" min="-0.042499" max="0.040992" rms="0.005838"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<labeltrack name="Label Track" numlabels="10" height="106" minimized="0">
+		<label t="0.57242895" t1="1.98914097" title="landing1"/>
+		<label t="2.71297317" t1="4.03723620" title="landing2"/>
+		<label t="4.59655763" t1="5.60011772" title="landing3"/>
+		<label t="6.28419916" t1="7.55277059" title="landing4"/>
+		<label t="8.03776581" t1="8.97484064" title="landing5"/>
+		<label t="12.19800648" t1="12.97941238" title="meow1"/>
+		<label t="13.81837831" t1="15.45520371" title="meow2"/>
+		<label t="16.38464857" t1="17.44566898" title="meow3"/>
+		<label t="18.17605951" t1="18.67415475" title="meow4"/>
+		<label t="22.19314685" t1="27.51328290" title="falling-off-screen"/>
+	</labeltrack>
+</project>

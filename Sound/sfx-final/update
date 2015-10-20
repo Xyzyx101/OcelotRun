@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp -v sfx.json ~/code/monkeyRunC++/Resources/sound
+cp -v *.wav ~/code/monkeyRunC++/Resources/sound/SFX
