@@ -7,22 +7,25 @@ public class GroundGenerator : MonoBehaviour
     public List<Chunk> Chunks;
     public TileWidget TileWidget;
     public float MoveSpeed;
+    public GameObject[] InitialGround;
     private float lastHeight = 0;
 
     void Start()
     {
-        int seed = (int)Time.realtimeSinceStartup * 1000;
+        int seed = (int)(Time.realtimeSinceStartup * 1000);
         Debug.LogFormat("Seed:{0}", seed);
         Random.seed = seed;
         Chunks = new List<Chunk>();
 
-        Chunk newChunk = new Chunk();
-        newChunk.Init(TileWidget, Chunk.ChunkWidth * 0.5f, 0.0f);
-        lastHeight = lastHeight + newChunk.GetEndHeight();
-        Chunks.Add(newChunk);
+        foreach (GameObject initialGroundChunk in InitialGround)
+        {
+            Chunk newChunk = new Chunk();
+            newChunk.InitWithKnownChunk(initialGroundChunk);
+            Chunks.Add(newChunk);
+        }
+        lastHeight = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Chunk firstChunk = Chunks[0];
@@ -69,6 +72,12 @@ public class Chunk
         tilesRemaining = (int)(ChunkWidth / tileSize);
         totalTiles = (int)(ChunkWidth / tileSize);
         Generate();
+    }
+
+    public void InitWithKnownChunk(GameObject initialGround)
+    {
+        parent.transform.position = initialGround.transform.position;
+        initialGround.transform.parent = parent.transform;
     }
 
     public void Move(float amount)
@@ -123,19 +132,19 @@ public class Chunk
         switch (chunkType)
         {
             case ChunkType.Flat:
-                Debug.Log("Generate Flat");
+                //Debug.Log("Generate Flat");
                 GenerateFlat();
                 break;
             case ChunkType.Hilly:
-                Debug.Log("Generate Hilly");
+                //Debug.Log("Generate Hilly");
                 GenerateHilly();
                 break;
             case ChunkType.SmallHole:
-                Debug.Log("Generate Small Hole");
+                //Debug.Log("Generate Small Hole");
                 GenerateSmallHole();
                 break;
             case ChunkType.BigHole:
-                Debug.Log("Generate Big Hole");
+                //Debug.Log("Generate Big Hole");
                 GenerateBigHole();
                 break;
         }
@@ -302,6 +311,7 @@ public class Chunk
 
     private void GenerateSmallHole()
     {
+        bool lastSectionWasHole = false;
         while (tilesRemaining > 0)
         {
             int sectionWidth = GetSectionWidth(tilesRemaining);
@@ -310,7 +320,7 @@ public class Chunk
             Vector3 sectionScale = Vector3.one;
 
             int holeSize = (int)Random.Range(4.0f, 7.0f);
-            if (holeSize + 4 < tilesRemaining && Random.value > 0.5f)  // if the whole fits add it maybe
+            if (holeSize + 4 < tilesRemaining && Random.value > 0.5f && !lastSectionWasHole)  // if the whole fits add it maybe
             {
                 // cap the previous section
                 GameObject endSection = tileWidget.GetEnd();
@@ -329,6 +339,7 @@ public class Chunk
                 newSection.transform.parent = parent.transform;
                 newSection.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                 tilesRemaining -= 1;
+                lastSectionWasHole = true;
             }
             else // else add another slope piece
             {
@@ -362,6 +373,7 @@ public class Chunk
                 newSection.transform.parent = parent.transform;
                 newSection.transform.localScale = sectionScale;
                 tilesRemaining -= sectionWidth;
+                lastSectionWasHole = false;
             }
         }
     }
