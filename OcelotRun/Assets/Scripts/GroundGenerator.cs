@@ -54,7 +54,6 @@ public class GroundGenerator : MonoBehaviour
         }
 
         Chunk lastChunk = Chunks[Chunks.Count - 1];
-        float debug = lastChunk.GetPos().x;
         if (lastChunk.GetPos().x < Chunk.ChunkWidth)
         {
             Chunk newChunk = new Chunk();
@@ -148,10 +147,6 @@ public class Chunk
 
     private void Generate()
     {
-        //FIXME
-        GenerateBigHole();
-        return;
-
         ChunkType chunkType = GetNewChunkType();
         switch (chunkType)
         {
@@ -606,7 +601,6 @@ public class Chunk
     // Generates count vines at coords between (x,y) and (x+xWidth, y)
     void GenerateVines(int count, float x, float y, float xWidth)
     {
-        Debug.Log("Generate Vine Count : " + count);
         for (int i = 0; i < count; ++i)
         {
             float xPos = Random.Range(x, x+xWidth);

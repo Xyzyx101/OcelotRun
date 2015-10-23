@@ -82,7 +82,7 @@ public class IKSolver : MonoBehaviour
         ikTargetPoint = ParentObject.transform.InverseTransformPoint(ikTargetPoint);
         boneChainStart = ParentObject.transform.InverseTransformPoint(boneChainStart);
         Vector3 relativeTarget = ikTargetPoint - boneChainStart;
-        bool validSolution = CalcIK(
+        CalcIK(
             LengthA,
             LengthB,
             -relativeTarget.y,
