@@ -14,6 +14,7 @@ public class GroundGenerator : MonoBehaviour
     public static GameObject Dirt2x;
 
     private float lastHeight = 0;
+    static public VinePool VinePool;
 
     void Start()
     {
@@ -32,6 +33,9 @@ public class GroundGenerator : MonoBehaviour
 
         Dirt1x = DirtPrefabs[0];
         Dirt2x = DirtPrefabs[1];
+
+        GameObject vinePoolObj = (GameObject)GameObject.FindGameObjectWithTag("VinePool");
+        VinePool = vinePoolObj.GetComponent<VinePool>();
     }
 
     void Update()
@@ -108,7 +112,15 @@ public class Chunk
     {
         foreach (Transform child in parent.transform)
         {
-            UnityEngine.Object.Destroy(child.gameObject);
+            if (child.tag == "VineRoot")
+            {
+                child.transform.parent = GroundGenerator.VinePool.transform;
+            }
+            else
+            {
+                UnityEngine.Object.Destroy(child.gameObject);
+            }
+
         }
         UnityEngine.Object.Destroy(parent);
     }
@@ -136,6 +148,10 @@ public class Chunk
 
     private void Generate()
     {
+        //FIXME
+        GenerateBigHole();
+        return;
+
         ChunkType chunkType = GetNewChunkType();
         switch (chunkType)
         {
@@ -276,6 +292,7 @@ public class Chunk
             newSection.transform.localScale = sectionScale;
             tilesRemaining -= sectionWidth;
         }
+        GenerateVines((int)(Random.value * 4) + 2, parent.transform.position.x, parent.transform.position.y, (float)totalTiles * tileSize);
     }
 
     private void GenerateHilly()
@@ -320,6 +337,7 @@ public class Chunk
             newSection.transform.localScale = sectionScale;
             tilesRemaining -= sectionWidth;
         }
+        GenerateVines((int)(Random.value * 3) + 1, parent.transform.position.x, parent.transform.position.y, (float)totalTiles * tileSize);
     }
 
     private void GenerateSmallHole()
@@ -345,7 +363,7 @@ public class Chunk
 
                 // Make the actual hole
                 tilesRemaining -= holeSize - 1;
-                height += (int)Random.Range(-1.0f, 3.0f);
+                height += (int)Random.Range(-2.0f, 2.0f);
 
                 // cap the next section
                 GameObject startSection = tileWidget.GetEnd();
@@ -396,6 +414,7 @@ public class Chunk
                 lastSectionWasHole = false;
             }
         }
+        GenerateVines((int)(Random.value * 4), parent.transform.position.x, parent.transform.position.y, (float)totalTiles * tileSize);
     }
 
     private void GenerateBigHole()
@@ -416,6 +435,11 @@ public class Chunk
                 GameObject newSection = (GameObject)UnityEngine.Object.Instantiate(endSection, sectionPos, Quaternion.identity);
                 newSection.transform.parent = parent.transform;
 
+                // There will always be a vine in the first half of a large hole
+                GenerateVines( 1, sectionPos.x, sectionPos.y-2.0f*tileSize, (float)holeSize* 0.5f * tileSize + 2.0f * tileSize);
+                // plus up to two more
+                GenerateVines((int)(Random.value * 3), sectionPos.x, sectionPos.y - 2.0f * tileSize, (float)holeSize * 0.5f * tileSize);
+
                 CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, 1);
 
                 // Make the actual hole
@@ -430,7 +454,7 @@ public class Chunk
                 newSection.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                 tilesRemaining -= 1;
 
-                CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, 1);
+                CreateDirtFlat((float)(totalTiles - tilesRemaining - 1) * tileSize, height, 1);
             }
             else // else add another slope piece
             {
@@ -515,7 +539,7 @@ public class Chunk
     {
         switch (size)
         {
-           case 2:
+            case 2:
                 {
                     Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.95f, 0.0f);
                     GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
@@ -576,6 +600,20 @@ public class Chunk
                     newDirt.transform.parent = parent.transform;
                     break;
                 }
+        }
+    }
+
+    // Generates count vines at coords between (x,y) and (x+xWidth, y)
+    void GenerateVines(int count, float x, float y, float xWidth)
+    {
+        Debug.Log("Generate Vine Count : " + count);
+        for (int i = 0; i < count; ++i)
+        {
+            float xPos = Random.Range(x, x+xWidth);
+            float yPos = Random.Range(y + 7.0f, y + 12.0f);
+            GameObject newVine = GroundGenerator.VinePool.GetVineRoot();
+            newVine.transform.position = new Vector3(xPos, yPos, 0.0f);
+            newVine.transform.parent = parent.transform;
         }
     }
 }

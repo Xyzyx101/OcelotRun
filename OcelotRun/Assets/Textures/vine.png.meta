@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 46d9869eaec2b6e44944e9068fa97f39
-timeCreated: 1445544453
+timeCreated: 1445578829
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -60,8 +60,8 @@ TextureImporter:
         y: 172
         width: 45
         height: 84
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .506197751, y: .50221324}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: vine_1
       rect:
@@ -71,7 +71,7 @@ TextureImporter:
         width: 45
         height: 80
       alignment: 9
-      pivot: {x: .47419998, y: .5}
+      pivot: {x: .479772598, y: .498862267}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: vine_2
       rect:
@@ -81,7 +81,7 @@ TextureImporter:
         width: 52
         height: 84
       alignment: 9
-      pivot: {x: .477673054, y: .50000006}
+      pivot: {x: .47890383, y: .506529689}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
