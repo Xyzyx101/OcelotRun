@@ -124,13 +124,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5088492, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
-      propertyPath: m_Constraints
-      value: 0
+    - target: {fileID: 483248, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .850000024
       objectReference: {fileID: 0}
-    - target: {fileID: 23467184, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
-      propertyPath: m_UseMotor
-      value: 1
+    - target: {fileID: 483248, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .680000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 455452, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.829999983
+      objectReference: {fileID: 0}
+    - target: {fileID: 455452, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0900000036
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
@@ -142,6 +150,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11403136, guid: b0877dd7d96047c40aa2000617664f86, type: 2}
+      propertyPath: DirtPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 413614, guid: b0877dd7d96047c40aa2000617664f86, type: 2}
       propertyPath: m_LocalPosition.x
       value: -6.4000001
@@ -187,6 +199,14 @@ Prefab:
       value: 
       objectReference: {fileID: -7310811918437815874, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 11403136, guid: b0877dd7d96047c40aa2000617664f86, type: 2}
+      propertyPath: DirtPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 146634, guid: f4d6f83f3c81cc441bd290279f33da27, type: 2}
+    - target: {fileID: 11403136, guid: b0877dd7d96047c40aa2000617664f86, type: 2}
+      propertyPath: DirtPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 154270, guid: 358ec71f0054a544596bef3962d41732, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0877dd7d96047c40aa2000617664f86, type: 2}
   m_IsPrefabParent: 0
@@ -275,4 +295,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2

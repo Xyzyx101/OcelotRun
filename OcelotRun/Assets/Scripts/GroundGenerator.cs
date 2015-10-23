@@ -8,6 +8,11 @@ public class GroundGenerator : MonoBehaviour
     public TileWidget TileWidget;
     public float MoveSpeed;
     public GameObject[] InitialGround;
+    public GameObject[] DirtPrefabs;
+
+    public static GameObject Dirt1x;
+    public static GameObject Dirt2x;
+
     private float lastHeight = 0;
 
     void Start()
@@ -24,6 +29,9 @@ public class GroundGenerator : MonoBehaviour
             Chunks.Add(newChunk);
         }
         lastHeight = 0;
+
+        Dirt1x = DirtPrefabs[0];
+        Dirt2x = DirtPrefabs[1];
     }
 
     void Update()
@@ -221,6 +229,7 @@ public class Chunk
                         section = tileWidget.GetFlat4();
                         break;
                 }
+                CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                 if (Random.value < 0.5)
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining) * tileSize, height, 0.0f));
@@ -249,11 +258,13 @@ public class Chunk
                 if (Random.value < 0.5) // Flip
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining) * tileSize, height, 0.0f));
+                    CreateDirtDown((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                     height -= tileSize;
                 }
                 else
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining + sectionWidth) * tileSize, height + 0.64f, 0.0f));
+                    CreateDirtUp((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                     sectionScale = Vector3.Scale(sectionScale, new Vector3(-1.0f, 1.0f, 1.0f));
                     height += tileSize;
                 }
@@ -292,12 +303,14 @@ public class Chunk
             if (Random.value < 0.5) // Flip
             {
                 sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining) * tileSize, height, 0.0f));
+                CreateDirtDown((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                 height -= tileSize;
             }
             else
             {
                 sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining + sectionWidth) * tileSize, height + 0.64f, 0.0f));
                 sectionScale = Vector3.Scale(sectionScale, new Vector3(-1.0f, 1.0f, 1.0f));
+                CreateDirtUp((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                 height += tileSize;
             }
 
@@ -328,6 +341,8 @@ public class Chunk
                 GameObject newSection = (GameObject)UnityEngine.Object.Instantiate(endSection, sectionPos, Quaternion.identity);
                 newSection.transform.parent = parent.transform;
 
+                CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, 1);
+
                 // Make the actual hole
                 tilesRemaining -= holeSize - 1;
                 height += (int)Random.Range(-1.0f, 3.0f);
@@ -338,6 +353,9 @@ public class Chunk
                 newSection = (GameObject)UnityEngine.Object.Instantiate(startSection, sectionPos, Quaternion.identity);
                 newSection.transform.parent = parent.transform;
                 newSection.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+
+                CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, 1);
+
                 tilesRemaining -= 1;
                 lastSectionWasHole = true;
             }
@@ -356,15 +374,17 @@ public class Chunk
                         section = tileWidget.GetSlope4();
                         break;
                 }
-                if (Random.value < 0.5) // Flip
+                if (Random.value < 0.65) // Flip
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining) * tileSize, height, 0.0f));
+                    CreateDirtDown((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                     height -= tileSize;
                 }
                 else
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining + sectionWidth) * tileSize, height + 0.64f, 0.0f));
                     sectionScale = Vector3.Scale(sectionScale, new Vector3(-1.0f, 1.0f, 1.0f));
+                    CreateDirtUp((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                     height += tileSize;
                 }
 
@@ -396,6 +416,8 @@ public class Chunk
                 GameObject newSection = (GameObject)UnityEngine.Object.Instantiate(endSection, sectionPos, Quaternion.identity);
                 newSection.transform.parent = parent.transform;
 
+                CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, 1);
+
                 // Make the actual hole
                 tilesRemaining -= holeSize - 1;
                 height += (int)Random.Range(-3.0f, 2.0f);
@@ -407,6 +429,8 @@ public class Chunk
                 newSection.transform.parent = parent.transform;
                 newSection.transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                 tilesRemaining -= 1;
+
+                CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height, 1);
             }
             else // else add another slope piece
             {
@@ -423,15 +447,17 @@ public class Chunk
                         section = tileWidget.GetSlope4();
                         break;
                 }
-                if (Random.value < 0.5) // Flip
+                if (Random.value < 0.65) // Flip
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining) * tileSize, height, 0.0f));
+                    CreateDirtDown((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                     height -= tileSize;
                 }
                 else
                 {
                     sectionPos = parent.transform.TransformPoint(new Vector3((float)(totalTiles - tilesRemaining + sectionWidth) * tileSize, height + 0.64f, 0.0f));
                     sectionScale = Vector3.Scale(sectionScale, new Vector3(-1.0f, 1.0f, 1.0f));
+                    CreateDirtUp((float)(totalTiles - tilesRemaining) * tileSize, height, sectionWidth);
                     height += tileSize;
                 }
 
@@ -441,6 +467,115 @@ public class Chunk
                 newSection.transform.localScale = sectionScale;
                 tilesRemaining -= sectionWidth;
             }
+        }
+    }
+
+    void CreateDirtFlat(float x, float y, int size)
+    {
+        switch (size)
+        {
+            case 1:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.5f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt1x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 2:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.5f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 3:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.5f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    dirtPos = parent.transform.TransformPoint(x + 2.0f * tileSize, y - tileSize * 0.5f, 0.0f);
+                    newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt1x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 4:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.5f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    dirtPos = parent.transform.TransformPoint(x + 2.0f * tileSize, y - tileSize * 0.5f, 0.0f);
+                    newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+        }
+    }
+
+    void CreateDirtDown(float x, float y, int size)
+    {
+        switch (size)
+        {
+           case 2:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.95f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 3:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.75f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    dirtPos = parent.transform.TransformPoint(x + 2.0f * tileSize, y - tileSize * 1.5f, 0.0f);
+                    newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt1x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 4:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.65f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    dirtPos = parent.transform.TransformPoint(x + 2.0f * tileSize, y - tileSize * 1.5f, 0.0f);
+                    newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+        }
+    }
+
+    void CreateDirtUp(float x, float y, int size)
+    {
+        switch (size)
+        {
+            case 2:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.25f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 3:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.4f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    dirtPos = parent.transform.TransformPoint(x + 2.0f * tileSize, y + tileSize * 0.5f, 0.0f);
+                    newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt1x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
+            case 4:
+                {
+                    Vector3 dirtPos = parent.transform.TransformPoint(x, y - tileSize * 0.5f, 0.0f);
+                    GameObject newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    dirtPos = parent.transform.TransformPoint(x + 2.0f * tileSize, y + tileSize * 0.5f, 0.0f);
+                    newDirt = (GameObject)Object.Instantiate(GroundGenerator.Dirt2x, dirtPos, Quaternion.identity);
+                    newDirt.transform.parent = parent.transform;
+                    break;
+                }
         }
     }
 }
