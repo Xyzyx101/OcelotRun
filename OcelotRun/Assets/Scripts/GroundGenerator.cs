@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GroundGenerator : MonoBehaviour
 {
+    public PlayerController PlayerController;
     public List<Chunk> Chunks;
     public TileWidget TileWidget;
     public float MoveSpeed;
@@ -40,6 +41,7 @@ public class GroundGenerator : MonoBehaviour
 
     void Update()
     {
+        MoveSpeed = PlayerController.GetSpeed();
         Chunk firstChunk = Chunks[0];
         if (firstChunk.GetPos().x < (-Chunk.ChunkWidth * 2))
         {

@@ -13,8 +13,8 @@ public class IKSolver : MonoBehaviour
 
     public bool SolvePosAngle2; // Solve for positive angle 2 instead of negative angle 2
 
-    private HingeJoint2D JointB;
-    private HingeJoint2D JointA;
+    //private HingeJoint2D JointB;
+    //private HingeJoint2D JointA;
 
     private float LengthA;
     private float LengthB;
@@ -28,25 +28,25 @@ public class IKSolver : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        HingeJoint2D[] joints = ParentObject.GetComponents<HingeJoint2D>();
-        foreach (HingeJoint2D j in joints)
-        {
-            if (j.connectedBody.name == BodyA.name)
-            {
-                JointA = j;
-                break;
-            }
-        }
+        //HingeJoint2D[] joints = ParentObject.GetComponents<HingeJoint2D>();
+        //foreach (HingeJoint2D j in joints)
+        //{
+        //    if (j.connectedBody.name == BodyA.name)
+        //    {
+        //        JointA = j;
+        //        break;
+        //    }
+        //}
         
-        joints = BodyA.gameObject.GetComponents<HingeJoint2D>();
-        foreach (HingeJoint2D j in joints)
-        {
-            if (j.connectedBody.name == BodyB.name)
-            {
-                JointB = j;
-                break;
-            }
-        }
+        //joints = BodyA.gameObject.GetComponents<HingeJoint2D>();
+        //foreach (HingeJoint2D j in joints)
+        //{
+        //    if (j.connectedBody.name == BodyB.name)
+        //    {
+        //        JointB = j;
+        //        break;
+        //    }
+        //}
 
         HingeJointInterpolator[] interpolators = ParentObject.GetComponents<HingeJointInterpolator>();
         foreach (HingeJointInterpolator interp in interpolators)

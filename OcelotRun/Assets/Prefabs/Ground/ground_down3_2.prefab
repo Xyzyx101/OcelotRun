@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 490480}
   - 212: {fileID: 21241588}
   - 60: {fileID: 6055064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground_down3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +90,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

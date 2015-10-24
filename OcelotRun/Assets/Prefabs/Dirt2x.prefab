@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dirt2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   - 4: {fileID: 418960}
   - 23: {fileID: 2359544}
   - 33: {fileID: 3359452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dirt2XQuad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154270}

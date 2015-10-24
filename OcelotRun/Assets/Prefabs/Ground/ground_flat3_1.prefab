@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 468232}
   - 212: {fileID: 21217552}
   - 61: {fileID: 6140560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground_flat3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,6 +87,10 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 147f55a6602b46145b9222cdec812830, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 158186}

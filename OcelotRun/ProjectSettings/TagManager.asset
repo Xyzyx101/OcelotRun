@@ -6,6 +6,7 @@ TagManager:
   tags:
   - VineRoot
   - VinePool
+  - GroundGenerator
   layers:
   - Default
   - TransparentFX
