@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     private Animator Animator;
     private PlayerRotation PlayerRotation;
 
+    // Vine Grab
+    private VineTrigger VineTrigger;
+    private Rigidbody2D RightArmRB, LeftArmRB;
+    private Vector2 HandOffset;
+    private VineSection SwingVine;
+
     private float TotalJumpPhase1Time = 0.1f;
     private float JumpPhase1Timer = 0.0f;
     private float TotalJumpPhase2Time = 0.5f;
@@ -28,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     private float TotalDeathTime = 2.0f;
     private float DeathTimer = 0.0f;
+
+    private bool SwingForward;
 
     private enum STATE
     {
@@ -54,16 +62,21 @@ public class PlayerController : MonoBehaviour
         GroundTrigger = GetComponentInChildren<GroundTrigger>();
         InputManager = GetComponent<InputManager>();
         PlayerRotation = GetComponentInChildren<PlayerRotation>();
+        VineTrigger = GetComponentInChildren<VineTrigger>();
 
         Animator = GetComponentInChildren<Animator>();
 
-        ChangeState(STATE.RUN);
+        RightArmRB = transform.Find("Torso/UpperArm_R/LowerArm_R").GetComponent<Rigidbody2D>();
+        LeftArmRB = transform.Find("Torso/UpperArm_L/LowerArm_L").GetComponent<Rigidbody2D>();
+        HandOffset = transform.Find("Torso/UpperArm_R/LowerArm_R/ArmEndPoint_R").localPosition;
+
+        ChangeState(STATE.FRONT_FLIP);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 5.0f)
+        if (TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 5.0f)
         {
             ChangeState(STATE.DEAD);
         }
@@ -78,7 +91,7 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         FallTransitionTimer -= Time.deltaTime;
-                        if (FallTransitionTimer<0f)
+                        if (FallTransitionTimer < 0f)
                         {
                             ChangeState(STATE.FALL);
                         }
@@ -108,12 +121,26 @@ public class PlayerController : MonoBehaviour
                     {
                         JumpPhase1 = false;
                         JumpPhase2 = false;
-                        ChangeState(STATE.FALL);
+                        if (TorsoRB.velocity.y < -1.0f)
+                        {
+                            ChangeState(STATE.FALL);
+                        }
                     }
+
+                    if (VineTrigger.IsTouchingVine && InputManager.Held(Action.JUMP))
+                    {
+                        ChangeState(STATE.SWING);
+                    }
+
                     break;
                 }
             case STATE.FALL:
                 {
+                    if (VineTrigger.IsTouchingVine && InputManager.Held(Action.JUMP))
+                    {
+                        ChangeState(STATE.SWING);
+                    }
+
                     if (GroundTrigger.IsOnGround)
                     {
                         ChangeState(STATE.RUN);
@@ -122,14 +149,41 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.SWING:
                 {
+                    if (!InputManager.Held(Action.JUMP))
+                    {
+                        Speed = 5f;
+                        SwingVine.Release();
+                        PlayerRotation.SetMode(PlayerRotation.RotMode.STABLE);
+                        ChangeState(STATE.FALL);
+                    }
+                    else if (SwingForward && TorsoRB.velocity.x < -1f)
+                    {
+                        TorsoRB.AddForce(new Vector2(-TorsoRB.mass * 5f, 0f), ForceMode2D.Impulse);
+                        SwingForward = false;
+                        Animator.SetTrigger("SwingBackward");
+                    }
+                    else if (!SwingForward && TorsoRB.velocity.x > 1f)
+                    {
+                        TorsoRB.AddForce(new Vector2(TorsoRB.mass * 5f, 0f), ForceMode2D.Impulse);
+                        SwingForward = true;
+                        Animator.SetTrigger("SwingForward");
+                    }
                     break;
                 }
             case STATE.FRONT_FLIP:
                 {
+                    if (PlayerRotation.GetMode() == PlayerRotation.RotMode.STABLE)
+                    {
+                        ChangeState(STATE.FALL);
+                    }
                     break;
                 }
             case STATE.BACK_FLIP:
                 {
+                    if (PlayerRotation.GetMode() == PlayerRotation.RotMode.STABLE)
+                    {
+                        ChangeState(STATE.FALL);
+                    }
                     break;
                 }
             case STATE.HIT_BY_CAR:
@@ -139,7 +193,7 @@ public class PlayerController : MonoBehaviour
             case STATE.DEAD:
                 {
                     DeathTimer -= Time.deltaTime;
-                    if (DeathTimer<0f)
+                    if (DeathTimer < 0f)
                     {
                         Application.LoadLevel("GameScene");
                     }
@@ -160,12 +214,12 @@ public class PlayerController : MonoBehaviour
             case STATE.RUN:
                 {
                     PlayerRotation.targetAngle = -25;
-                    ///FootStep();
                     Animator.SetTrigger("Run");
                     break;
                 }
             case STATE.JUMP:
                 {
+                    Animator.SetTrigger("Jump");
                     JumpPhase1Timer = TotalJumpPhase1Time;
                     JumpPhase2Timer = TotalJumpPhase2Time;
                     break;
@@ -178,14 +232,27 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.SWING:
                 {
+                    SwingForward = true;
+                    Speed = 0;
+                    JumpPhase1 = false;
+                    JumpPhase2 = false;
+                    SwingVine = VineTrigger.GetVine();
+                    PlayerRotation.SetMode(PlayerRotation.RotMode.FLOP);
+                    SwingVine.Grab(TorsoRB, LeftArmRB, RightArmRB, HandOffset);
+                    TorsoRB.AddForce(new Vector2(TorsoRB.mass * 7f, 0f), ForceMode2D.Impulse);
+                    Animator.SetTrigger("SwingForward");
                     break;
                 }
             case STATE.FRONT_FLIP:
                 {
+                    Animator.SetTrigger("FrontFlip");
+                    PlayerRotation.SetMode(PlayerRotation.RotMode.FRONT_FLIP);
                     break;
                 }
             case STATE.BACK_FLIP:
                 {
+                    Animator.SetTrigger("BackFlip");
+                    PlayerRotation.SetMode(PlayerRotation.RotMode.BACK_FLIP);
                     break;
                 }
             case STATE.HIT_BY_CAR:
@@ -211,16 +278,6 @@ public class PlayerController : MonoBehaviour
         {
             TorsoRB.AddForce(new Vector2(0f, TorsoRB.mass * 5f));
         }
-    }
-
-    // This is a correction factor that is applied every time the player takes a step.
-    // It is intended to makes it look like the biomechanics of running actually work.
-    // It is called by an event in the run animation. 
-    void FootStep()
-    {
-        //float correctionFactor = TorsoRB.transform.position.x * 0.125f;
-        //float xVel = Mathf.Lerp(0f, 10f, Mathf.Abs(correctionFactor)) * -Mathf.Sign(correctionFactor);
-        //TorsoRB.velocity = new Vector2(xVel, 0f);
     }
 
     public float GetSpeed()

@@ -172,6 +172,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &143242
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 480276}
+  - 58: {fileID: 5819176}
+  - 114: {fileID: 11485124}
+  m_Layer: 13
+  m_Name: VineTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &148748
 GameObject:
   m_ObjectHideFlags: 1
@@ -501,6 +518,7 @@ Transform:
   - {fileID: 441500}
   - {fileID: 483248}
   - {fileID: 455452}
+  - {fileID: 480276}
   m_Father: {fileID: 408782}
   m_RootOrder: 2
 --- !u!4 &407384
@@ -742,6 +760,18 @@ Transform:
   - {fileID: 472906}
   m_Father: {fileID: 489408}
   m_RootOrder: 0
+--- !u!4 &480276
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .921596587, y: .960989237, z: 0}
+  m_LocalScale: {x: 1.02399611, y: 1.14950871, z: 1}
+  m_Children: []
+  m_Father: {fileID: 404428}
+  m_RootOrder: 10
 --- !u!4 &480814
 Transform:
   m_ObjectHideFlags: 1
@@ -1061,6 +1091,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5819176
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143242}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .620000005
 --- !u!58 &5840776
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -1368,6 +1411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  GroundGenerator: {fileID: 0}
 --- !u!114 &11441636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1431,10 +1475,10 @@ MonoBehaviour:
   debugAngle: 0
   stableAngle: -25
   stableSpeed: 100
-  minStableTorque: 1000
-  maxStableTorque: 1e+06
-  flipSpeed: 350
-  flipTorque: 5000
+  minStableTorque: 200
+  maxStableTorque: 2000
+  flipSpeed: 600
+  flipTorque: 10000
   targetAngle: 0
 --- !u!114 &11459238
 MonoBehaviour:
@@ -1516,6 +1560,18 @@ MonoBehaviour:
   MinTorque: 0
   MaxTorque: 300
   TargetBody: {fileID: 485490}
+--- !u!114 &11485124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab70e6824df42841b6eccf841bac744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsTouchingVine: 0
 --- !u!114 &11485470
 MonoBehaviour:
   m_ObjectHideFlags: 1

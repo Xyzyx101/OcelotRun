@@ -24,6 +24,9 @@ public class PlayerRotation : MonoBehaviour
     public float targetAngle;
     private RotMode CurrentRotMode;
 
+    // This is used to add full rotations to the stable target after full flips.
+    private float rotationOffset = 0f;
+
     // Use this for initialization
     void Start()
     {
@@ -39,7 +42,7 @@ public class PlayerRotation : MonoBehaviour
         switch (CurrentRotMode)
         {
             case RotMode.STABLE:
-                float angleDiff = targetAngle - joint.jointAngle;
+                float angleDiff = targetAngle + rotationOffset - joint.jointAngle;
                 float factor = Mathf.Abs(angleDiff) / 45.0f;
                 float torque = Mathf.Lerp(minStableTorque, maxStableTorque, factor);
                 JointMotor2D motor = joint.motor;
@@ -50,12 +53,14 @@ public class PlayerRotation : MonoBehaviour
             case RotMode.BACK_FLIP:
                if (joint.jointAngle > targetAngle)
                 {
+                    rotationOffset += 360f;
                     SetMode(RotMode.STABLE);
                 }
                 break;
             case RotMode.FRONT_FLIP:
                 if (joint.jointAngle < targetAngle)
                 {
+                    rotationOffset -= 360f;
                     SetMode(RotMode.STABLE);
                 }
                 break;
@@ -99,10 +104,10 @@ public class PlayerRotation : MonoBehaviour
                     }
                     initialOffset = 360.0f - initialOffset;
 
-                    targetAngle = joint.jointAngle + initialOffset;
+                    targetAngle = joint.jointAngle + initialOffset - 90f;
                                        
                     JointMotor2D motor = joint.motor;
-                    motor.motorSpeed = flipSpeed;
+                    motor.motorSpeed = flipSpeed * 0.75f;
                     motor.maxMotorTorque = flipTorque;
                     joint.motor = motor;
                     break;
@@ -117,5 +122,10 @@ public class PlayerRotation : MonoBehaviour
             joint.useMotor = true;
         }
         CurrentRotMode = newMode;
+    }
+
+    public RotMode GetMode()
+    {
+        return CurrentRotMode;
     }
 }
