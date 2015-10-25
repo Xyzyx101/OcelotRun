@@ -7,6 +7,7 @@ TagManager:
   - VineRoot
   - VinePool
   - GroundGenerator
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - VineTrigger
   - GroundNoJump
   - PlayerJumpTrigger
-  - 
+  - Car
   - 
   - 
   - 

@@ -134,21 +134,25 @@ public class Chunk
     private ChunkType GetNewChunkType()
     {
         float rand = Random.value;
-        if (rand < 0.3f)
+        if (rand < 0.25f)
         {
             return ChunkType.Flat;
         }
-        else if (rand < 0.62f)
+        else if (rand < 0.50f)
         {
             return ChunkType.Hilly;
         }
-        else if (rand < 0.85f)
+        else if (rand < 0.70f)
         {
             return ChunkType.SmallHole;
         }
-        else
+        else if (rand < 0.90f)
         {
             return ChunkType.BigHole;
+        }
+        else
+        {
+            return ChunkType.Road;
         }
     }
 
@@ -172,6 +176,9 @@ public class Chunk
             case ChunkType.BigHole:
                 //Debug.Log("Generate Big Hole");
                 GenerateBigHole();
+                break;
+            case ChunkType.Road:
+                GenerateRoad();
                 break;
         }
     }
@@ -438,7 +445,7 @@ public class Chunk
                 newSection.transform.parent = parent.transform;
 
                 // There will always be a vine in the first half of a large hole
-                GenerateVines( 1, sectionPos.x, sectionPos.y-2.0f*tileSize, (float)holeSize* 0.5f * tileSize + 2.0f * tileSize);
+                GenerateVines(1, sectionPos.x, sectionPos.y - 2.0f * tileSize, (float)holeSize * 0.5f * tileSize + 2.0f * tileSize);
                 // plus up to two more
                 GenerateVines((int)(Random.value * 3), sectionPos.x, sectionPos.y - 2.0f * tileSize, (float)holeSize * 0.5f * tileSize);
 
@@ -496,6 +503,18 @@ public class Chunk
         }
     }
 
+    private void GenerateRoad()
+    {
+        Vector3 sectionPos = Vector3.zero;
+        sectionPos = parent.transform.TransformPoint(0f, height-0.5f*tileSize, 0.0f);
+        GameObject newSection = (GameObject)UnityEngine.Object.Instantiate(tileWidget.Road, sectionPos, Quaternion.identity);
+        newSection.transform.parent = parent.transform;
+        while (tilesRemaining > 0)
+        {
+            CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height+0.5f*tileSize, 2);
+            tilesRemaining -= 2;
+        }
+    }
     void CreateDirtFlat(float x, float y, int size)
     {
         switch (size)
@@ -610,7 +629,7 @@ public class Chunk
     {
         for (int i = 0; i < count; ++i)
         {
-            float xPos = Random.Range(x, x+xWidth);
+            float xPos = Random.Range(x, x + xWidth);
             float yPos = Random.Range(y + 12.0f, y + 16.0f);
             GameObject newVine = GroundGenerator.VinePool.GetVineRoot();
             newVine.transform.position = new Vector3(xPos, yPos, 0.0f);
@@ -624,5 +643,6 @@ enum ChunkType
     Flat,
     Hilly,
     BigHole,
-    SmallHole
+    SmallHole,
+    Road
 }

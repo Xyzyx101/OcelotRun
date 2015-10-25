@@ -124,10 +124,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11432608, guid: 1aef7d1ec1eb2034987ab198e47dc316, type: 2}
-      propertyPath: PoolSize
-      value: 16
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aef7d1ec1eb2034987ab198e47dc316, type: 2}
   m_IsPrefabParent: 0
@@ -279,6 +275,10 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11440158, guid: d849dd039afb7134bb1a0d2b832b2333, type: 2}
+      propertyPath: GroundGenerator
+      value: 
+      objectReference: {fileID: 487930371}
+    - target: {fileID: 11440158, guid: d849dd039afb7134bb1a0d2b832b2333, type: 2}
       propertyPath: PlayerController
       value: 
       objectReference: {fileID: 421782818}
@@ -286,10 +286,6 @@ Prefab:
       propertyPath: PlayerTransform
       value: 
       objectReference: {fileID: 1374940390}
-    - target: {fileID: 11440158, guid: d849dd039afb7134bb1a0d2b832b2333, type: 2}
-      propertyPath: GroundGenerator
-      value: 
-      objectReference: {fileID: 487930371}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d849dd039afb7134bb1a0d2b832b2333, type: 2}
   m_IsPrefabParent: 0

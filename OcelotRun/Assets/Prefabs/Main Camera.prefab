@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0230a24e37e2354fb26467e591294a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GroundGenerator: {fileID: 0}
   PlayerController: {fileID: 0}
   PlayerTransform: {fileID: 0}
   MinPlayerOffset: .5

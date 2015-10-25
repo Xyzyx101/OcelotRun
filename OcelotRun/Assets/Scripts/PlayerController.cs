@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     //  This speed is used by the camera and the GroundGenerator to look like it moves.
     //  The player is always close to 0 in x.
     public float Speed;
+    public float TargetSpeed;
+    public float SpeedChangeRate;
     public GroundGenerator GroundGenerator;
 
     private Rigidbody2D TorsoRB;
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateSpeed();
         if (TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 5.0f)
         {
             ChangeState(STATE.DEAD);
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             case STATE.RUN:
                 {
+                   
                     if (GroundTrigger.IsOnGround)
                     {
                         FallTransitionTimer = TotalFallTransitionTime;
@@ -151,7 +155,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (!InputManager.Held(Action.JUMP))
                     {
-                        Speed = 5f;
+                        TargetSpeed = 5f;
                         SwingVine.Release();
                         PlayerRotation.SetMode(PlayerRotation.RotMode.STABLE);
                         ChangeState(STATE.FALL);
@@ -188,6 +192,7 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.HIT_BY_CAR:
                 {
+                    ChangeState(STATE.DEAD);
                     break;
                 }
             case STATE.DEAD:
@@ -233,13 +238,13 @@ public class PlayerController : MonoBehaviour
             case STATE.SWING:
                 {
                     SwingForward = true;
-                    Speed = 0;
+                    TargetSpeed = 0;
                     JumpPhase1 = false;
                     JumpPhase2 = false;
                     SwingVine = VineTrigger.GetVine();
                     PlayerRotation.SetMode(PlayerRotation.RotMode.FLOP);
                     SwingVine.Grab(TorsoRB, LeftArmRB, RightArmRB, HandOffset);
-                    TorsoRB.AddForce(new Vector2(TorsoRB.mass * 7f, 0f), ForceMode2D.Impulse);
+                    TorsoRB.AddForce(new Vector2(TorsoRB.mass * 4f, 0f), ForceMode2D.Impulse);
                     Animator.SetTrigger("SwingForward");
                     break;
                 }
@@ -257,6 +262,9 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.HIT_BY_CAR:
                 {
+                    Animator.SetTrigger("HitByCar");
+                    PlayerRotation.SetMode(PlayerRotation.RotMode.FLOP);
+                    TorsoRB.AddTorque(TorsoRB.mass*-1.25f, ForceMode2D.Impulse);
                     break;
                 }
             case STATE.DEAD:
@@ -283,5 +291,22 @@ public class PlayerController : MonoBehaviour
     public float GetSpeed()
     {
         return Speed;
+    }
+
+    void UpdateSpeed()
+    {
+        if (CurrentState!=STATE.SWING)
+        {
+            TargetSpeed = Mathf.Clamp(TargetSpeed, 3.5f, 12f);
+        }
+        float playerOffset = TorsoRB.transform.position.x - transform.position.x;
+        TorsoRB.AddForce(new Vector2(-playerOffset * TorsoRB.mass, 0f), ForceMode2D.Force);
+        float newTarget = playerOffset + TargetSpeed;
+        Speed = Mathf.Lerp(Speed, newTarget, SpeedChangeRate * Time.deltaTime);
+    }
+
+    public void GetHitByCar()
+    {
+        ChangeState(STATE.HIT_BY_CAR);
     }
 }

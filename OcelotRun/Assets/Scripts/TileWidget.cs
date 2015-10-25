@@ -10,6 +10,7 @@ public class TileWidget : MonoBehaviour
     public GameObject[] Slope3;
     public GameObject[] Slope4;
     public GameObject[] End;
+    public GameObject Road;
 
     public GameObject GetFlat2()
     {
@@ -45,5 +46,9 @@ public class TileWidget : MonoBehaviour
     {
         int val = (int)Random.Range(0.0f, (float)End.Length);
         return End[val];
+    }
+    public GameObject GetRoad()
+    {
+        return Road;
     }
 }
