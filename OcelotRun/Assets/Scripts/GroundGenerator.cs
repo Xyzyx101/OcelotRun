@@ -64,6 +64,11 @@ public class GroundGenerator : MonoBehaviour
             Chunks.Add(newChunk);
         }
     }
+
+    public float GetLastHeight()
+    {
+        return lastHeight;
+    }
 }
 
 [System.Serializable]

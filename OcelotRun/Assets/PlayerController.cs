@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     //  This speed is used by the camera and the GroundGenerator to look like it moves.
     //  The player is always close to 0 in x.
     public float Speed;
+    public GroundGenerator GroundGenerator;
 
     private Rigidbody2D TorsoRB;
     private GroundTrigger GroundTrigger;
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private bool JumpPhase1 = false;
     private bool JumpPhase2 = false;
+
+    private float TotalDeathTime = 2.0f;
+    private float DeathTimer = 0.0f;
 
     private enum STATE
     {
@@ -59,6 +63,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 5.0f)
+        {
+            ChangeState(STATE.DEAD);
+        }
         switch (CurrentState)
         {
             case STATE.RUN:
@@ -130,6 +138,11 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.DEAD:
                 {
+                    DeathTimer -= Time.deltaTime;
+                    if (DeathTimer<0f)
+                    {
+                        Application.LoadLevel("GameScene");
+                    }
                     break;
                 }
         }
@@ -181,6 +194,7 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.DEAD:
                 {
+                    DeathTimer = TotalDeathTime;
                     break;
                 }
         }

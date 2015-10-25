@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-
+    public GroundGenerator GroundGenerator;
     public PlayerController PlayerController;
     public Transform PlayerTransform;
     public float MinPlayerOffset;
@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
         cameraX = Mathf.Min(Mathf.Max(-5.0f, cameraX), 5.0f);
 
         float cameraY = Mathf.Lerp(transform.position.y, PlayerTransform.position.y + playerOffset, TranslateSpeed * Time.deltaTime);
-        //cameraY = Mathf.Min(Mathf.Max(-10.0f, cameraY), 10f);
+        cameraY = Mathf.Min(Mathf.Max(GroundGenerator.GetLastHeight()-10.0f, cameraY), GroundGenerator.GetLastHeight()+10f);
 
         transform.position = new Vector3(cameraX, cameraY, transform.position.z);
     }
