@@ -151,7 +151,7 @@ MonoBehaviour:
   - {fileID: 150402, guid: a3037efbea81c22448e9e21ace019846, type: 2}
   - {fileID: 172226, guid: 3694f8938ac2b3740ab560fd958749dd, type: 2}
   SectionLength: .75
-  SectionCount: 9
+  SectionCount: 12
 --- !u!114 &11470182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,7 +216,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: SectionCount
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131148}

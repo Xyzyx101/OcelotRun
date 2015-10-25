@@ -11,8 +11,8 @@ public enum Action
 
 public class InputManager : MonoBehaviour
 {
-    public bool[] held = new bool[(int)Action._ACTION_LENGTH];
-    public bool[] pressed = new bool[(int)Action._ACTION_LENGTH];
+    private bool[] held = new bool[(int)Action._ACTION_LENGTH];
+    private bool[] pressed = new bool[(int)Action._ACTION_LENGTH];
     private bool[] canPress = new bool[(int)Action._ACTION_LENGTH];
 
     void Start()

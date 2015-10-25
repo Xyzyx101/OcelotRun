@@ -94,14 +94,13 @@ MonoBehaviour:
   PlayerController: {fileID: 0}
   PlayerTransform: {fileID: 0}
   MinPlayerOffset: .5
-  MaxPlayerOffset: 3
+  MaxPlayerOffset: 2
   TranslateSpeed: 3
-  MinScale: 3
+  MinScale: 4
   MaxScale: 8
-  MinSpeedPoint: 1
-  MaxSpeedPoint: 5
+  MinSpeedPoint: 3
+  MaxSpeedPoint: 10
   ScaleChangeSpeed: 2
-  PlayerMoveSpeed: 1
 --- !u!124 &12432816
 Behaviour:
   m_ObjectHideFlags: 1

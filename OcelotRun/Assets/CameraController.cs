@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
         cameraX = Mathf.Min(Mathf.Max(-5.0f, cameraX), 5.0f);
 
         float cameraY = Mathf.Lerp(transform.position.y, PlayerTransform.position.y + playerOffset, TranslateSpeed * Time.deltaTime);
-        cameraY = Mathf.Min(Mathf.Max(-10.0f, cameraY), 10f);
+        //cameraY = Mathf.Min(Mathf.Max(-10.0f, cameraY), 10f);
 
         transform.position = new Vector3(cameraX, cameraY, transform.position.z);
     }

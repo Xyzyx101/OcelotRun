@@ -11,14 +11,19 @@ public class PlayerController : MonoBehaviour
     private GroundTrigger GroundTrigger;
     private InputManager InputManager;
     private SliderJoint2D GroundMotor;
+    private Animator Animator;
+    private PlayerRotation PlayerRotation;
 
-    private float TotalJumpPhase1Time = 0.05f;
+    private float TotalJumpPhase1Time = 0.1f;
     private float JumpPhase1Timer = 0.0f;
-    private float TotalJumpPhase2Time = 0.4f;
+    private float TotalJumpPhase2Time = 0.5f;
     private float JumpPhase2Timer = 0.0f;
 
-    public bool JumpPhase1 = false;
-    public bool JumpPhase2 = false;
+    private float TotalFallTransitionTime = 0.8f;
+    private float FallTransitionTimer = 0f;
+
+    private bool JumpPhase1 = false;
+    private bool JumpPhase2 = false;
 
     private enum STATE
     {
@@ -44,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
         GroundTrigger = GetComponentInChildren<GroundTrigger>();
         InputManager = GetComponent<InputManager>();
+        PlayerRotation = GetComponentInChildren<PlayerRotation>();
+
+        Animator = GetComponentInChildren<Animator>();
 
         ChangeState(STATE.RUN);
     }
@@ -51,11 +59,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AutoCenter();
         switch (CurrentState)
         {
             case STATE.RUN:
                 {
+                    if (GroundTrigger.IsOnGround)
+                    {
+                        FallTransitionTimer = TotalFallTransitionTime;
+                    }
+                    else
+                    {
+                        FallTransitionTimer -= Time.deltaTime;
+                        if (FallTransitionTimer<0f)
+                        {
+                            ChangeState(STATE.FALL);
+                        }
+                    }
+
                     if (InputManager.Pressed(Action.JUMP) && GroundTrigger.IsOnGround)
                     {
                         ChangeState(STATE.JUMP);
@@ -126,6 +146,9 @@ public class PlayerController : MonoBehaviour
         {
             case STATE.RUN:
                 {
+                    PlayerRotation.targetAngle = -25;
+                    ///FootStep();
+                    Animator.SetTrigger("Run");
                     break;
                 }
             case STATE.JUMP:
@@ -136,6 +159,8 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.FALL:
                 {
+                    PlayerRotation.targetAngle = 15f;
+                    Animator.SetTrigger("Fall");
                     break;
                 }
             case STATE.SWING:
@@ -170,15 +195,18 @@ public class PlayerController : MonoBehaviour
         }
         else if (JumpPhase2)
         {
-            TorsoRB.AddForce(new Vector2(0f, TorsoRB.mass*2f));
+            TorsoRB.AddForce(new Vector2(0f, TorsoRB.mass * 5f));
         }
     }
 
-    // Apply force to keep the playing in the middle of the screen.
-    void AutoCenter()
+    // This is a correction factor that is applied every time the player takes a step.
+    // It is intended to makes it look like the biomechanics of running actually work.
+    // It is called by an event in the run animation. 
+    void FootStep()
     {
-        float force = Mathf.Lerp(0f, 300f, Mathf.Abs(TorsoRB.transform.position.x)) * Mathf.Sign(TorsoRB.transform.position.x);
-        TorsoRB.AddForce(new Vector2(-force, 0f));
+        //float correctionFactor = TorsoRB.transform.position.x * 0.125f;
+        //float xVel = Mathf.Lerp(0f, 10f, Mathf.Abs(correctionFactor)) * -Mathf.Sign(correctionFactor);
+        //TorsoRB.velocity = new Vector2(xVel, 0f);
     }
 
     public float GetSpeed()

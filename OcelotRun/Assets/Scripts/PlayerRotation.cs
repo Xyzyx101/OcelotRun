@@ -40,7 +40,7 @@ public class PlayerRotation : MonoBehaviour
         {
             case RotMode.STABLE:
                 float angleDiff = targetAngle - joint.jointAngle;
-                float factor = Mathf.Abs(angleDiff) / 180.0f;
+                float factor = Mathf.Abs(angleDiff) / 45.0f;
                 float torque = Mathf.Lerp(minStableTorque, maxStableTorque, factor);
                 JointMotor2D motor = joint.motor;
                 motor.motorSpeed = stableSpeed * Mathf.Sign(angleDiff);

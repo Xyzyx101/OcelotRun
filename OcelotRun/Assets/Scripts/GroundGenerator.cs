@@ -43,7 +43,7 @@ public class GroundGenerator : MonoBehaviour
     {
         MoveSpeed = PlayerController.GetSpeed();
         Chunk firstChunk = Chunks[0];
-        if (firstChunk.GetPos().x < (-Chunk.ChunkWidth * 2))
+        if (firstChunk.GetPos().x < (-Chunk.ChunkWidth * 3))
         {
             Chunks.Remove(firstChunk);
             firstChunk.Destroy();
@@ -606,7 +606,7 @@ public class Chunk
         for (int i = 0; i < count; ++i)
         {
             float xPos = Random.Range(x, x+xWidth);
-            float yPos = Random.Range(y + 7.0f, y + 12.0f);
+            float yPos = Random.Range(y + 12.0f, y + 16.0f);
             GameObject newVine = GroundGenerator.VinePool.GetVineRoot();
             newVine.transform.position = new Vector3(xPos, yPos, 0.0f);
             newVine.transform.parent = parent.transform;

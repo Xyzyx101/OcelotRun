@@ -5,6 +5,6 @@ PhysicsMaterial2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: GroundPhysicsMat
-  friction: .400000006
+  m_Name: CatFeet
+  friction: 10.0299997
   bounciness: 0
