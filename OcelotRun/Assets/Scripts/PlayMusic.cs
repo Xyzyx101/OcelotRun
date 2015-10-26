@@ -6,7 +6,7 @@ public class PlayMusic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SoundManager.Instance.Play(SoundManager.SOUND.Conga);
+        
     }
 
     void Update ()

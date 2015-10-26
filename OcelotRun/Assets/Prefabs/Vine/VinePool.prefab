@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VineRootPrefab: {fileID: 131148, guid: 2eae3d961f2303042b2aa3c7e4085b0b, type: 2}
-  PoolSize: 16
+  PoolSize: 24
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

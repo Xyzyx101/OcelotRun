@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private bool SwingForward;
 
+    private float Score = -500f; //-500 because the initial front flip should not count
+
     private enum STATE
     {
         RUN,
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateSpeed();
+        UpdateScore();
         if (TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 7.0f)
         {
             if (CurrentState != STATE.DEAD)
@@ -276,6 +279,7 @@ public class PlayerController : MonoBehaviour
                     Animator.SetTrigger("FrontFlip");
                     SoundManager.Instance.Play(SoundManager.SOUND.Meow);
                     PlayerRotation.SetMode(PlayerRotation.RotMode.FRONT_FLIP);
+                    Score += 500f;
                     break;
                 }
             case STATE.BACK_FLIP:
@@ -283,6 +287,7 @@ public class PlayerController : MonoBehaviour
                     Animator.SetTrigger("BackFlip");
                     SoundManager.Instance.Play(SoundManager.SOUND.Meow);
                     PlayerRotation.SetMode(PlayerRotation.RotMode.BACK_FLIP);
+                    Score += 250f;
                     break;
                 }
             case STATE.HIT_BY_CAR:
@@ -338,6 +343,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateScore()
+    {
+        Score += Time.deltaTime * Speed;
+    }
+
     public void GetHitByCar()
     {
         ChangeState(STATE.HIT_BY_CAR);
@@ -347,4 +357,10 @@ public class PlayerController : MonoBehaviour
     {
         SoundManager.Instance.Play(SoundManager.SOUND.Step);
     }
+
+    public float GetScore()
+    {
+        return Score;
+    }
+
 }
