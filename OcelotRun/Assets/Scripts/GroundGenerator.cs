@@ -182,6 +182,9 @@ public class Chunk
 
     private void Generate()
     {
+        //FIXME
+        GenerateRoad();
+        return;
         ChunkType chunkType = GetNewChunkType();
         switch (chunkType)
         {
