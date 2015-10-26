@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &163896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 485086}
+  - 114: {fileID: 11426560}
+  m_Layer: 0
+  m_Name: HillLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485086
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.0743275, y: -5.51999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11426560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91e1fb231fb5d64a92b196ac20de574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerController: {fileID: 0}
+  Sprites:
+  - {fileID: 117276, guid: ad9fb6b9712c3f749ab5497f2ceeba50, type: 2}
+  - {fileID: 162520, guid: bcc0bad74488e684fb467c4884897c8e, type: 2}
+  - {fileID: 101738, guid: a690e72613fdd9941b20216d4ffc1059, type: 2}
+  - {fileID: 162822, guid: f6ce30e357b57e543a3de126309be2c4, type: 2}
+  - {fileID: 136672, guid: 4b7961f1fce43374ab9ad3f8b275113f, type: 2}
+  - {fileID: 145804, guid: ff3dac98399af8942addc9e6c349e99d, type: 2}
+  - {fileID: 125654, guid: 895a05c4c97b477498c4637b575f24cb, type: 2}
+  - {fileID: 115404, guid: 60b3e29935daf804e81e992f9104c8c3, type: 2}
+  - {fileID: 100766, guid: 2af0379c599ba4c4a990fcd80c00a215, type: 2}
+  - {fileID: 159088, guid: 3dbe336f2437d3744ae4c0ad06f1f35d, type: 2}
+  - {fileID: 159366, guid: ff18ee03b87e3d94584ef58ffd84452c, type: 2}
+  - {fileID: 134558, guid: bd90de6dcd0dc1d4ba8f99f776ca8770, type: 2}
+  MinCount: 0
+  MaxCount: 3
+  DistanceFraction: .25
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: DistanceFraction
+      value: .25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 163896}
+  m_IsPrefabParent: 1

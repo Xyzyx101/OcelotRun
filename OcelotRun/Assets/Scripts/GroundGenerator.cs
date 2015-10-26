@@ -10,6 +10,9 @@ public class GroundGenerator : MonoBehaviour
     public float MoveSpeed;
     public GameObject[] InitialGround;
     public GameObject[] DirtPrefabs;
+    public GameObject TreeLayerParam;
+    public GameObject PlantLayerParam;
+    public GameObject HillLayerParam;
 
     public static GameObject Dirt1x;
     public static GameObject Dirt2x;
@@ -17,11 +20,32 @@ public class GroundGenerator : MonoBehaviour
     private float lastHeight = 0;
     static public VinePool VinePool;
 
+    // Parallax Layer
+    static public GameObject TreeLayer;
+    static public float TreeDistanceFraction;
+    static public GameObject PlantLayer;
+    static public float PlantDistanceFraction;
+    static public GameObject HillLayer;
+    static public float HillDistanceFraction;
+
     void Start()
     {
         int seed = (int)(Time.realtimeSinceStartup * 1000);
         Debug.LogFormat("Seed:{0}", seed);
         Random.seed = seed;
+
+        TreeLayer = TreeLayerParam;
+        ParallaxChunk LayerScript = TreeLayer.GetComponent<ParallaxChunk>();
+        TreeDistanceFraction = LayerScript.DistanceFraction;
+
+        PlantLayer = PlantLayerParam;
+        LayerScript = PlantLayer.GetComponent<ParallaxChunk>();
+        PlantDistanceFraction = LayerScript.DistanceFraction;
+
+        HillLayer = HillLayerParam;
+        LayerScript = PlantLayer.GetComponent<ParallaxChunk>();
+        HillDistanceFraction = LayerScript.DistanceFraction;
+
         Chunks = new List<Chunk>();
 
         foreach (GameObject initialGroundChunk in InitialGround)
@@ -302,6 +326,9 @@ public class Chunk
             tilesRemaining -= sectionWidth;
         }
         GenerateVines((int)(Random.value * 4) + 2, parent.transform.position.x, parent.transform.position.y, (float)totalTiles * tileSize);
+        CreateTreeLayer(parent.transform.position.x, parent.transform.position.y);
+        CreatePlantLayer(parent.transform.position.x, parent.transform.position.y);
+        CreateHillLayer(parent.transform.position.x, parent.transform.position.y);
     }
 
     private void GenerateHilly()
@@ -347,6 +374,9 @@ public class Chunk
             tilesRemaining -= sectionWidth;
         }
         GenerateVines((int)(Random.value * 3) + 1, parent.transform.position.x, parent.transform.position.y, (float)totalTiles * tileSize);
+        CreateTreeLayer(parent.transform.position.x, parent.transform.position.y);
+        CreatePlantLayer(parent.transform.position.x, parent.transform.position.y);
+        CreateHillLayer(parent.transform.position.x, parent.transform.position.y);
     }
 
     private void GenerateSmallHole()
@@ -424,6 +454,9 @@ public class Chunk
             }
         }
         GenerateVines((int)(Random.value * 4), parent.transform.position.x, parent.transform.position.y, (float)totalTiles * tileSize);
+        CreateTreeLayer(parent.transform.position.x, parent.transform.position.y);
+        CreatePlantLayer(parent.transform.position.x, parent.transform.position.y);
+        CreateHillLayer(parent.transform.position.x, parent.transform.position.y);
     }
 
     private void GenerateBigHole()
@@ -501,6 +534,7 @@ public class Chunk
                 tilesRemaining -= sectionWidth;
             }
         }
+
     }
 
     private void GenerateRoad()
@@ -514,7 +548,9 @@ public class Chunk
             CreateDirtFlat((float)(totalTiles - tilesRemaining) * tileSize, height+0.5f*tileSize, 2);
             tilesRemaining -= 2;
         }
+        CreateHillLayer(parent.transform.position.x, parent.transform.position.y);
     }
+
     void CreateDirtFlat(float x, float y, int size)
     {
         switch (size)
@@ -635,6 +671,19 @@ public class Chunk
             newVine.transform.position = new Vector3(xPos, yPos, 0.0f);
             newVine.transform.parent = parent.transform;
         }
+    }
+
+    void CreateTreeLayer(float x, float y)
+    {
+        Object.Instantiate(GroundGenerator.TreeLayer, new Vector3(x*GroundGenerator.TreeDistanceFraction, y-2f, 100f), Quaternion.identity);
+    }
+    void CreatePlantLayer(float x, float y)
+    {
+        Object.Instantiate(GroundGenerator.PlantLayer, new Vector3(x * GroundGenerator.PlantDistanceFraction, y - 1.5f, 100f), Quaternion.identity);
+    }
+    void CreateHillLayer(float x, float y)
+    {
+        Object.Instantiate(GroundGenerator.HillLayer, new Vector3(x * GroundGenerator.HillDistanceFraction, y - 2f, 100f), Quaternion.identity);
     }
 }
 

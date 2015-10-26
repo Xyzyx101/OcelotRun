@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &182284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 498168}
+  - 114: {fileID: 11463218}
+  m_Layer: 0
+  m_Name: TreeLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &498168
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.13000011, y: 2.75, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11463218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91e1fb231fb5d64a92b196ac20de574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerController: {fileID: 0}
+  Sprites:
+  - {fileID: 131420, guid: a29ff3386d15add4f97333fc7665adc8, type: 2}
+  - {fileID: 155794, guid: 4d29b56c51caec340ab3ec0bc5dbe559, type: 2}
+  - {fileID: 133334, guid: e473bd0079cddf846af18be62caff91c, type: 2}
+  - {fileID: 137800, guid: 88e81550dc2f743418fb02b44dcb78a7, type: 2}
+  - {fileID: 174368, guid: 97efc16865fb6344aa5a38ffa06b2421, type: 2}
+  - {fileID: 170806, guid: 3e7d9944e5366e2489ac1cfeff7fccda, type: 2}
+  - {fileID: 107518, guid: b619f10ba23dcbd4fb142c7823587766, type: 2}
+  - {fileID: 159220, guid: 29cecb0e5c58c784ab5a3b263db2cfaa, type: 2}
+  - {fileID: 135090, guid: 53664b09db2370b4ca6e8b9ba8d9a514, type: 2}
+  - {fileID: 197314, guid: 334820b33291c5c4283632f930bdadb4, type: 2}
+  - {fileID: 121350, guid: ce2b1a7cf2b616840919d2bf7ad1ba30, type: 2}
+  - {fileID: 173510, guid: da2c17ff359d8ae4591e025e83c43c9e, type: 2}
+  - {fileID: 128368, guid: d0429572db4e69b40a679e5355c30023, type: 2}
+  - {fileID: 160156, guid: 58ca178b617b0084daa8d49a5b9c78d9, type: 2}
+  MinCount: 2
+  MaxCount: 5
+  DistanceFraction: .600000024
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 182284}
+  m_IsPrefabParent: 1

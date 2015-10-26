@@ -1,23 +1,21 @@
 fileFormatVersion: 2
-guid: 1cb21a210ee1b3149823d02a1099604f
-timeCreated: 1445834822
+guid: 94b5cc4a161875a4a84cd919fc7c3ab1
+timeCreated: 1445840117
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: tree-trunks_0
-    21300002: tree-trunks_1
-    21300004: tree-trunks_2
-    21300006: tree-trunks_3
-    21300008: tree-trunks_4
-    21300010: tree-trunks_5
-    21300012: tree-trunks_6
-    21300014: tree-trunks_7
-    21300016: tree-trunks_8
-    21300018: tree-trunks_9
-    21300020: tree-trunks_10
-    21300022: tree-trunks_11
-    21300024: tree-trunks_12
-    21300026: tree-trunks_13
+    21300000: hills_0
+    21300002: hills_1
+    21300004: hills_2
+    21300006: hills_3
+    21300008: hills_4
+    21300010: hills_5
+    21300012: hills_6
+    21300014: hills_7
+    21300016: hills_8
+    21300018: hills_9
+    21300020: hills_10
+    21300022: hills_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,149 +56,129 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 60
+  spritePixelsToUnits: 35
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: tree-trunks_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 986
-        width: 195
-        height: 1060
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_1
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 994
-        width: 223
-        height: 1052
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_2
-      rect:
-        serializedVersion: 2
-        x: 422
-        y: 1015
-        width: 140
-        height: 1031
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_3
-      rect:
-        serializedVersion: 2
-        x: 564
-        y: 1020
-        width: 276
-        height: 1028
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_4
-      rect:
-        serializedVersion: 2
-        x: 840
-        y: 1056
-        width: 531
-        height: 990
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_5
-      rect:
-        serializedVersion: 2
-        x: 1373
-        y: 1084
-        width: 390
-        height: 962
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_6
-      rect:
-        serializedVersion: 2
-        x: 1949
-        y: 1080
-        width: 83
-        height: 966
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_7
+    - name: hills_0
       rect:
         serializedVersion: 2
         x: 2
-        y: 9
-        width: 164
-        height: 975
+        y: 1922
+        width: 318
+        height: 124
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_8
+    - name: hills_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 8
-        width: 76
-        height: 976
+        x: 324
+        y: 1808
+        width: 462
+        height: 238
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_9
+    - name: hills_2
       rect:
         serializedVersion: 2
-        x: 246
-        y: 3
-        width: 454
-        height: 989
+        x: 784
+        y: 1686
+        width: 604
+        height: 360
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_10
+    - name: hills_3
       rect:
         serializedVersion: 2
-        x: 702
-        y: 24
-        width: 274
-        height: 995
+        x: 1391
+        y: 1730
+        width: 575
+        height: 316
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_11
+    - name: hills_4
       rect:
         serializedVersion: 2
-        x: 976
-        y: 84
-        width: 76
-        height: 972
+        x: 3
+        y: 1496
+        width: 486
+        height: 188
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_12
+    - name: hills_5
       rect:
         serializedVersion: 2
-        x: 1053
-        y: 87
-        width: 415
-        height: 969
+        x: 492
+        y: 1473
+        width: 526
+        height: 211
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tree-trunks_13
+    - name: hills_6
       rect:
         serializedVersion: 2
-        x: 1915
-        y: 56
-        width: 75
-        height: 971
+        x: 1022
+        y: 1536
+        width: 476
+        height: 148
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hills_7
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1568
+        width: 398
+        height: 116
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hills_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1068
+        width: 555
+        height: 402
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hills_9
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 1276
+        width: 709
+        height: 196
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hills_10
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 1248
+        width: 604
+        height: 223
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hills_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 855
+        width: 400
+        height: 211
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

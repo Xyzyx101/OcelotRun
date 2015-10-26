@@ -1,0 +1,276 @@
+fileFormatVersion: 2
+guid: ba8fcdd9a2c73fc48bcce0fda74468fc
+timeCreated: 1445839906
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: plants_0
+    21300002: plants_1
+    21300004: plants_2
+    21300006: plants_3
+    21300008: plants_4
+    21300010: plants_5
+    21300012: plants_6
+    21300014: plants_7
+    21300016: plants_8
+    21300018: plants_9
+    21300020: plants_10
+    21300022: plants_11
+    21300024: plants_12
+    21300026: plants_13
+    21300028: plants_14
+    21300030: plants_15
+    21300032: plants_16
+    21300034: plants_17
+    21300036: plants_18
+    21300038: plants_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 2
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 75
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: plants_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1336
+        width: 573
+        height: 709
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_1
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1348
+        width: 574
+        height: 697
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_2
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 1396
+        width: 492
+        height: 651
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_3
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 1582
+        width: 360
+        height: 465
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_4
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 1099
+        width: 335
+        height: 485
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_5
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 1543
+        width: 176
+        height: 453
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_6
+      rect:
+        serializedVersion: 2
+        x: 2444
+        y: 1410
+        width: 573
+        height: 465
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 472
+        width: 336
+        height: 862
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_8
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 680
+        width: 417
+        height: 658
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_9
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 952
+        width: 203
+        height: 107
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_10
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 851
+        width: 477
+        height: 543
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_11
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 739
+        width: 324
+        height: 362
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_12
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 922
+        width: 374
+        height: 266
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 26
+        width: 514
+        height: 446
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_14
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 46
+        width: 276
+        height: 460
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_15
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 242
+        width: 432
+        height: 534
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_16
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 442
+        width: 347
+        height: 411
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_17
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 281
+        width: 326
+        height: 177
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_18
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 1
+        width: 330
+        height: 241
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plants_19
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 73
+        width: 283
+        height: 316
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
