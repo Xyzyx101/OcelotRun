@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &112338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450658}
+  - 114: {fileID: 11496202}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &450658
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.230000004, y: -7.23999977, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11496202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492c0fb28ed74c84696e89fe9b7b920f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TitleScreenMusic: {fileID: 8300000, guid: 005a56173bd47824392e6cb449b6c75c, type: 3}
+  LevelMusic:
+  - {fileID: 8300000, guid: ec28e70ea6bbc6343859be90eeb1c261, type: 3}
+  - {fileID: 8300000, guid: c8f207c665f91c2409b4663d9d2c71fc, type: 3}
+  - {fileID: 8300000, guid: b03cee8a875878a4aaf584fc09246080, type: 3}
+  Falling:
+  - {fileID: 8300000, guid: 9c5b0a671ed0fd3469707051ff35b6e1, type: 3}
+  - {fileID: 8300000, guid: 058cd0391afd76f459980137597ab186, type: 3}
+  - {fileID: 8300000, guid: 3bad476b8c5676247ae5a81ffb6234b2, type: 3}
+  Pain:
+  - {fileID: 8300000, guid: 37e71690bf9242d4594c896ac3c34706, type: 3}
+  - {fileID: 8300000, guid: 583fb4b644a831b4ab97c6ba1c004220, type: 3}
+  - {fileID: 8300000, guid: 2b14c71a62c5b5746af6e2f0da1f7a94, type: 3}
+  - {fileID: 8300000, guid: 86d1a71cf68025e47bd3bc58c9996ee6, type: 3}
+  Conga: {fileID: 8300000, guid: 29cb3a06b30b1f143a8a6335e52cff9a, type: 3}
+  Landing:
+  - {fileID: 8300000, guid: 752ef9e4bd06d4d4cbb446df871fa70a, type: 3}
+  - {fileID: 8300000, guid: 8f9287b7d05479048a589f88ef12516b, type: 3}
+  - {fileID: 8300000, guid: 1765626baf243854ab3dcd49631aeacb, type: 3}
+  - {fileID: 8300000, guid: b8d84ecb1643ee54799dfa10e6439b30, type: 3}
+  - {fileID: 8300000, guid: 6ab3de2e7e02ed946aaa81975140ee3f, type: 3}
+  Meow:
+  - {fileID: 8300000, guid: 41a314588a383374991343d1819868fe, type: 3}
+  - {fileID: 8300000, guid: 818a8dfbc0a81064c8d93e1716aad957, type: 3}
+  - {fileID: 8300000, guid: 98a7bbcc57a5e1847881c5853786dc48, type: 3}
+  - {fileID: 8300000, guid: 9342206ff10a61141aa12c2f768ea760, type: 3}
+  Snarl: {fileID: 8300000, guid: 7bd6b2624c0f3aa4bbc1169be6892d8c, type: 3}
+  Step:
+  - {fileID: 8300000, guid: 88044cb278aff4444a7c4471d2e0960e, type: 3}
+  - {fileID: 8300000, guid: b9e8c595857008c4385b4e7704109dee, type: 3}
+  - {fileID: 8300000, guid: e7269a86fdf2f0245bfcd10d392f7c5a, type: 3}
+  - {fileID: 8300000, guid: 46275f67d17207d45b1ce74abe4643b3, type: 3}
+  - {fileID: 8300000, guid: 1fef3d38358f2fe4e9394b6625c81593, type: 3}
+  - {fileID: 8300000, guid: 5d648539f36ef834e86c5a5d54d33a0b, type: 3}
+  - {fileID: 8300000, guid: ce4be9dd23f2f284983d1e824f442759, type: 3}
+  - {fileID: 8300000, guid: 7c4160cf1fb9ed842b4c959999deeee7, type: 3}
+  Vine:
+  - {fileID: 8300000, guid: a99410f7f6afc0845a41ea2ef17953c6, type: 3}
+  - {fileID: 8300000, guid: 85501dd92bf141840bbd3f4f9d3b77f2, type: 3}
+  - {fileID: 8300000, guid: 1635e57a59469ed4f9c67dccee465f9d, type: 3}
+  - {fileID: 8300000, guid: 34ee455dfde52eb459c566de7faedd3d, type: 3}
+  WoodClick: {fileID: 8300000, guid: e32be42b341112c428c2193f796244dc, type: 3}
+  WoodToggle: {fileID: 8300000, guid: f7a8cf63501d58d458734944067247ee, type: 3}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 112338}
+  m_IsPrefabParent: 1

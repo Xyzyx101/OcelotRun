@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private float TotalJumpPhase1Time = 0.1f;
     private float JumpPhase1Timer = 0.0f;
     private float TotalJumpPhase2Time = 0.5f;
-    private float JumpPhase2Timer = 0.0f;
+    private float JumpPhase2Timer = -10.0f; // This will get reset but I don't want to double jump before the first jump
 
     private float TotalFallTransitionTime = 0.8f;
     private float FallTransitionTimer = 0f;
@@ -79,15 +79,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateSpeed();
-        if (TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 5.0f)
+        if (TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 7.0f)
         {
-            ChangeState(STATE.DEAD);
+            if (CurrentState != STATE.DEAD)
+            {
+                SoundManager.Instance.Play(SoundManager.SOUND.Falling);
+                ChangeState(STATE.DEAD);
+            }
         }
         switch (CurrentState)
         {
             case STATE.RUN:
                 {
-                   
+
                     if (GroundTrigger.IsOnGround)
                     {
                         FallTransitionTimer = TotalFallTransitionTime;
@@ -140,6 +144,16 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.FALL:
                 {
+                    if (InputManager.Pressed(Action.JUMP)) {
+                        Debug.Log(JumpPhase2Timer);
+                        if (JumpPhase2Timer < 0.2f
+                        && JumpPhase2Timer > -0.4f)
+                        {
+                            Debug.Log("Double Jump");
+                            ChangeState(STATE.FRONT_FLIP);
+                            TorsoRB.AddForce(new Vector2(TorsoRB.mass, TorsoRB.mass * 2f), ForceMode2D.Impulse);
+                        }
+                    }
                     if (VineTrigger.IsTouchingVine && InputManager.Held(Action.JUMP))
                     {
                         ChangeState(STATE.SWING);
@@ -147,6 +161,7 @@ public class PlayerController : MonoBehaviour
 
                     if (GroundTrigger.IsOnGround)
                     {
+                        SoundManager.Instance.Play(SoundManager.SOUND.Landing);
                         ChangeState(STATE.RUN);
                     }
                     break;
@@ -158,7 +173,15 @@ public class PlayerController : MonoBehaviour
                         TargetSpeed = 5f;
                         SwingVine.Release();
                         PlayerRotation.SetMode(PlayerRotation.RotMode.STABLE);
-                        ChangeState(STATE.FALL);
+
+                        if (TorsoRB.transform.localEulerAngles.z % 360f > 50f)
+                        {
+                            ChangeState(STATE.BACK_FLIP);
+                        }
+                        else
+                        {
+                            ChangeState(STATE.FALL);
+                        }
                     }
                     else if (SwingForward && TorsoRB.velocity.x < -1f)
                     {
@@ -213,7 +236,6 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Change State" + newState);
         switch (newState)
         {
             case STATE.RUN:
@@ -225,6 +247,7 @@ public class PlayerController : MonoBehaviour
             case STATE.JUMP:
                 {
                     Animator.SetTrigger("Jump");
+                    SoundManager.Instance.Play(SoundManager.SOUND.Meow);
                     JumpPhase1Timer = TotalJumpPhase1Time;
                     JumpPhase2Timer = TotalJumpPhase2Time;
                     break;
@@ -246,17 +269,20 @@ public class PlayerController : MonoBehaviour
                     SwingVine.Grab(TorsoRB, LeftArmRB, RightArmRB, HandOffset);
                     TorsoRB.AddForce(new Vector2(TorsoRB.mass * 4f, 0f), ForceMode2D.Impulse);
                     Animator.SetTrigger("SwingForward");
+                    SoundManager.Instance.Play(SoundManager.SOUND.Vine);
                     break;
                 }
             case STATE.FRONT_FLIP:
                 {
                     Animator.SetTrigger("FrontFlip");
+                    SoundManager.Instance.Play(SoundManager.SOUND.Meow);
                     PlayerRotation.SetMode(PlayerRotation.RotMode.FRONT_FLIP);
                     break;
                 }
             case STATE.BACK_FLIP:
                 {
                     Animator.SetTrigger("BackFlip");
+                    SoundManager.Instance.Play(SoundManager.SOUND.Meow);
                     PlayerRotation.SetMode(PlayerRotation.RotMode.BACK_FLIP);
                     break;
                 }
@@ -264,7 +290,8 @@ public class PlayerController : MonoBehaviour
                 {
                     Animator.SetTrigger("HitByCar");
                     PlayerRotation.SetMode(PlayerRotation.RotMode.FLOP);
-                    TorsoRB.AddTorque(TorsoRB.mass*-1.25f, ForceMode2D.Impulse);
+                    TorsoRB.AddTorque(TorsoRB.mass * -1.25f, ForceMode2D.Impulse);
+                    SoundManager.Instance.Play(SoundManager.SOUND.Pain);
                     break;
                 }
             case STATE.DEAD:
@@ -295,7 +322,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateSpeed()
     {
-        if (CurrentState!=STATE.SWING)
+        if (CurrentState != STATE.SWING)
         {
             TargetSpeed = Mathf.Clamp(TargetSpeed, 3.5f, 12f);
         }
@@ -308,5 +335,10 @@ public class PlayerController : MonoBehaviour
     public void GetHitByCar()
     {
         ChangeState(STATE.HIT_BY_CAR);
+    }
+
+    public void Step()
+    {
+        SoundManager.Instance.Play(SoundManager.SOUND.Step);
     }
 }
