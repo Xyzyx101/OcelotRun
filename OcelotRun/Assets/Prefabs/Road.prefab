@@ -115,8 +115,8 @@ MonoBehaviour:
   CarSpawnPoint: {fileID: 455956}
   CarDestination: {fileID: 464696}
   SpawnRate: .5
-  MinSpeed: 1
-  MaxSpeed: 2.5
+  MinSpeed: 4
+  MaxSpeed: 7
 --- !u!212 &21210642
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -160,11 +160,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MinSpeed
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MaxSpeed
-      value: 2.5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SortingOrder

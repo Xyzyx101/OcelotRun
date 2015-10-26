@@ -144,12 +144,11 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.FALL:
                 {
-                    if (InputManager.Pressed(Action.JUMP)) {
-                        Debug.Log(JumpPhase2Timer);
+                    if (InputManager.Pressed(Action.JUMP))
+                    {
                         if (JumpPhase2Timer < 0.2f
                         && JumpPhase2Timer > -0.4f)
                         {
-                            Debug.Log("Double Jump");
                             ChangeState(STATE.FRONT_FLIP);
                             TorsoRB.AddForce(new Vector2(TorsoRB.mass, TorsoRB.mass * 2f), ForceMode2D.Impulse);
                         }
@@ -185,13 +184,13 @@ public class PlayerController : MonoBehaviour
                     }
                     else if (SwingForward && TorsoRB.velocity.x < -1f)
                     {
-                        TorsoRB.AddForce(new Vector2(-TorsoRB.mass * 5f, 0f), ForceMode2D.Impulse);
+                        TorsoRB.AddForce(new Vector2(-TorsoRB.mass * 3.5f, 0f), ForceMode2D.Impulse);
                         SwingForward = false;
                         Animator.SetTrigger("SwingBackward");
                     }
                     else if (!SwingForward && TorsoRB.velocity.x > 1f)
                     {
-                        TorsoRB.AddForce(new Vector2(TorsoRB.mass * 5f, 0f), ForceMode2D.Impulse);
+                        TorsoRB.AddForce(new Vector2(TorsoRB.mass * 3.5f, 0f), ForceMode2D.Impulse);
                         SwingForward = true;
                         Animator.SetTrigger("SwingForward");
                     }
@@ -254,7 +253,7 @@ public class PlayerController : MonoBehaviour
                 }
             case STATE.FALL:
                 {
-                    PlayerRotation.targetAngle = 15f;
+                    PlayerRotation.targetAngle = -15f;
                     Animator.SetTrigger("Fall");
                     break;
                 }
@@ -324,12 +323,19 @@ public class PlayerController : MonoBehaviour
     {
         if (CurrentState != STATE.SWING)
         {
-            TargetSpeed = Mathf.Clamp(TargetSpeed, 3.5f, 12f);
+            TargetSpeed = Mathf.Clamp(TargetSpeed, 5f, 9f);
         }
         float playerOffset = TorsoRB.transform.position.x - transform.position.x;
         TorsoRB.AddForce(new Vector2(-playerOffset * TorsoRB.mass, 0f), ForceMode2D.Force);
         float newTarget = playerOffset + TargetSpeed;
-        Speed = Mathf.Lerp(Speed, newTarget, SpeedChangeRate * Time.deltaTime);
+        if (Speed < 2.0f)
+        {
+            Speed = Mathf.Lerp(Speed, newTarget, 10f * SpeedChangeRate * Time.deltaTime);
+        }
+        else
+        {
+            Speed = Mathf.Lerp(Speed, newTarget, SpeedChangeRate * Time.deltaTime);
+        }
     }
 
     public void GetHitByCar()

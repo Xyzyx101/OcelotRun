@@ -12,7 +12,6 @@ public class CarCollisionCheck : MonoBehaviour {
     {
         if (other.tag == "Car")
         {
-            Debug.Log("Hit Car");
             PlayerController.GetHitByCar();
         }
     }
