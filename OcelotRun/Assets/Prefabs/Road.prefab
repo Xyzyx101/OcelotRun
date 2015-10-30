@@ -114,7 +114,7 @@ MonoBehaviour:
   - {fileID: 180164, guid: 97e0e57d3a02c4643851207c60372a85, type: 2}
   CarSpawnPoint: {fileID: 455956}
   CarDestination: {fileID: 464696}
-  SpawnRate: .5
+  SpawnRate: .300000012
   MinSpeed: 4
   MaxSpeed: 7
 --- !u!212 &21210642
@@ -156,7 +156,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SpawnRate
-      value: .5
+      value: .300000012
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: MinSpeed

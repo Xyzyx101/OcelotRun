@@ -23,7 +23,7 @@ public class Road : MonoBehaviour {
         SpawnTimer -= Time.deltaTime;
         if (SpawnTimer<0)
         {
-            if (Random.value<0.35)
+            if (Random.value<0.25)
             {
                 GameObject car = (GameObject)Instantiate(Cars[(int)Random.Range(0f, Cars.Length - 0.00001f)], CarSpawnPoint.position, Quaternion.identity);
                 Car carScript = car.GetComponent<Car>();
