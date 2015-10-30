@@ -470,6 +470,30 @@ Prefab:
       propertyPath: GroundGenerator
       value: 
       objectReference: {fileID: 487930371}
+    - target: {fileID: 23318356, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_UseLimits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23333524, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_UseLimits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11431694, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: JointSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11473518, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: JointSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 23467184, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088492, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
   m_IsPrefabParent: 0
@@ -849,6 +873,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738900449}
+--- !u!50 &756490509 stripped
+Rigidbody2D:
+  m_PrefabParentObject: {fileID: 5022486, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db,
+    type: 2}
+  m_PrefabInternal: {fileID: 461580003}
 --- !u!1 &788918527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1679,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1487373260}
+--- !u!1 &1591760746 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 173224, guid: 5e5ba4ecca0e30f43b8c40c929aaf8db, type: 2}
+  m_PrefabInternal: {fileID: 461580003}
+--- !u!231 &1591760751
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591760746}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 756490509}
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Distance: 1.20000005
+  m_DampingRatio: .699999988
+  m_Frequency: 50
 --- !u!1001 &1839899423
 Prefab:
   m_ObjectHideFlags: 0
@@ -1741,13 +1789,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498168, guid: be772482f99629045ab53293fc56a0a4, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 182284, guid: be772482f99629045ab53293fc56a0a4, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000,
-        type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be772482f99629045ab53293fc56a0a4, type: 2}
   m_IsPrefabParent: 0

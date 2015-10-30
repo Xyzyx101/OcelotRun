@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(TorsoRB.velocity);
         UpdateSpeed();
         UpdateScore();
         if (TorsoRB.transform.position.y < GroundGenerator.GetLastHeight() - 7.0f)
@@ -238,6 +239,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        Debug.Log(newState);
         switch (newState)
         {
             case STATE.RUN:
